@@ -5,3 +5,6 @@ Once it expires, the project can either be put back to the market or removed fro
 
 This is just a backend API that covers the functionality of the application from the server side with an implementation of a postgres database setup on heroku.
 
+# How to run the API
+
+npm run dev
