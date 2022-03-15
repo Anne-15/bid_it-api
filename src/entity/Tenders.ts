@@ -1,7 +1,7 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 
 @Entity()
-export class Suppliers {
+export class Tenders extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -13,7 +13,7 @@ export class Suppliers {
     services: string;
 
     @Column()
-    closingDate: Date;
+    closingDate: string;
 
     //companyName, sector, category from Suppliers table
 
