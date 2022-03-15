@@ -17,10 +17,12 @@ const getSignUp = async(req, res) => {
         email: string,
         password: string,
     } = req.body
+
     try {
         if(!(fullName && email && password)){
             throw{Error: "Incomplete details"}
         }
+
         //strong password checking
         const strong_pass = passwordStrength(password);
         if(strong_pass.id == 0 || strong_pass.id == 1){
@@ -46,6 +48,7 @@ const getSignUp = async(req, res) => {
                 res.status(200).send({" User created ": user.fullName});
             });
         })
+
         .catch((error) => {
             //check for duplicate users
             if(error.code == "23505"){
@@ -55,6 +58,7 @@ const getSignUp = async(req, res) => {
                 console.log(error);
             }
         });
+        
     } catch (error) {
         res.status(400).send(error)
         console.log(error)
