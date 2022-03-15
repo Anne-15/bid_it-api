@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import express = require("express");
 import { createConnection } from "typeorm";
-import { createBids } from "./routes/getBids";
 import getSuppliers from "./controllers/getSuppliers";
 import getTenders from "./controllers/getTenders";
+import getSignUp from "./controllers/getSignUp";
 
 const app = express();
 const PORT = 5000;
@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 //import routes
 app.get('/suppliers', getSuppliers);
 app.post('/tenders', getTenders);
+app.post('/signup', getSignUp);
 
 //server
 app.listen(PORT, () => console.log(`The server is connected at port http://localhost:${PORT}`))
