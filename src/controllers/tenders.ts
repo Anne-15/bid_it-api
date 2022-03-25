@@ -9,15 +9,16 @@ const tenders = (req, res) => {
            await tenderRep
            .find()
            .then((bid) => {
-               const {
-                   id,
-                   tenderName,
-                   services,
-                   closingDate
-               }: {id: number; tenderName: string; services: string; closingDate: Date} = bid[0];
+               console.log(bid)
+            //    const {
+            //        id,
+            //        tenderName,
+            //        services,
+            //        closingDate
+            //    }: {id: number; tenderName: string; services: string; closingDate: Date} = bid[0];
                
-               const loggedTender = {id, tenderName, services, closingDate};
-               res.send(loggedTender);
+            //    const loggedTender = {id, tenderName, services, closingDate};
+            //    res.send(loggedTender);
             });
         })
         .catch((error) => {
