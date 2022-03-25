@@ -7,14 +7,14 @@ const tenders = (req, res) => {
        database_connection.then(async(connection) => {
            let tenderRep = connection.getRepository(Tenders);
            await tenderRep
-           .find(Tenders)
+           .find()
            .then((bid) => {
                const {
                    id,
                    tenderName,
                    services,
                    closingDate
-               }: {id: number; tenderName: string; services: string; closingDate: string} = bid[0];
+               }: {id: number; tenderName: string; services: string; closingDate: Date} = bid[0];
                
                const loggedTender = {id, tenderName, services, closingDate};
                res.send(loggedTender);
