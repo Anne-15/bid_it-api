@@ -10,14 +10,13 @@ const getUsers = (req,res) => {
 
     database_connection.then(async(connection) => {
         let userRep = connection.getRepository(Sign);
-
         await userRep
-        .find({ email: decodeToken.payload.email })
-        .then((user) => {
-            const{ id, fullName, email, created }: { id:number; fullName: string; email: string; created: Date } = user[0];
-            const loggedUser = {id, fullName, email, created};
-            res.send(loggedUser);
-        });
+        .find()
+        // .then((user) => {
+        //     const{ id, fullName, email, created }: { id:number; fullName: string; email: string; created: Date } = user[0];
+        //     const loggedUser = {id, fullName, email, created};
+        //     res.send(loggedUser);
+        // });
     });
 }
 

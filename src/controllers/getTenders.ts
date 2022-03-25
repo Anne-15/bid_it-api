@@ -13,6 +13,8 @@ const getTenders = async(req, res) => {
         services: string;
         closingDate: string;
     } = req.body
+    // console.log(req.body);
+
     try {
         if(!(tenderName && services && closingDate)){
             throw{Error: "Incomplete details"}
@@ -34,6 +36,7 @@ const getTenders = async(req, res) => {
                 res.status(400).send({"Error":"Tender with the same name was added"});
             }else{
                 res.status(402).send({"Error":"error"})
+                console.log(error);
             }
         })
     } catch (error) {
