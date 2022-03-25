@@ -13,7 +13,7 @@ export class Tenders extends BaseEntity{
     services: string;
 
     @Column()
-    closingDate: Date;
+    closingDate: string;
 
     //companyName, sector, category from Suppliers table
 
