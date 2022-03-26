@@ -4,12 +4,10 @@ import { Suppliers } from "../entity/Suppliers";
 const getSuppliers = async(req, res) => {
     //get data from request body
     const {
-        id,
         companyName,
         category,
         sector
     } : {
-        id: number;
         companyName: string;
         category: string;
         sector: string
