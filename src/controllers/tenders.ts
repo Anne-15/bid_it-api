@@ -9,17 +9,11 @@ const tenders = (req, res) => {
            await tenderRep
            .find()
            .then((bid) => {
-               console.log(bid)
-            //    const {
-            //        id,
-            //        tenderName,
-            //        services,
-            //        closingDate
-            //    }: {id: number; tenderName: string; services: string; closingDate: Date} = bid[0];
-               
-            //    const loggedTender = {id, tenderName, services, closingDate};
-            //    res.send(loggedTender);
-            });
+               res.send(bid);
+            })
+            .catch((error) => {
+                res.status(402).send({"Error": "error"})
+            })
         })
         .catch((error) => {
             res.status(402).send({"Error":"error"})
