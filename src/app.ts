@@ -6,7 +6,7 @@ import getTenders from "./controllers/getTenders";
 import getSignUp from "./controllers/getSignUp";
 import getLogIn from "./controllers/getLogIn";
 import tenders from "./controllers/tenders";
-import Supply from "./controllers/suppliers";
+import suppliers from "./controllers/suppliers";
 
 const app = express();
 const PORT = 5000;
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
 //import routes
 app.post('/suppliers', getSuppliers);
-app.get('suppliers/list', Supply);
+app.get('suppliers/list', suppliers);
 app.post('/tenders', getTenders);
 app.get('/tenders/list', tenders);
 app.post('/signup', getSignUp);

@@ -1,22 +1,25 @@
 import database_connection from "../app";
-import { Suppliers } from "../entity/Suppliers";
+import { Supply } from "../entity/Supply";
 
-const Supply = async(req, res) => {
+const suppliers = async(req, res) => {
     try {
         //getting data from the database
         database_connection.then(async(connection) => {
-            let supplier = connection.getRepository(Suppliers);
-            await supplier
+            let sample = connection.getRepository(Supply);
+            await sample
             .find()
             .then((product) => {
                 res.send(product);
+                console.log(product);
             })
             .catch((error) => {
                 res.status(402).send(error);
+                // console.log(error);
             })
-            .catch((error) => {
-                res.status(402).send({"Error":"error"});
-            })
+        })
+        .catch((error) => {
+            res.status(402).send({"Error":"error"});
+            console.log(error);
         })
     } catch (error) {
         res.status(400).send(error);
@@ -24,4 +27,4 @@ const Supply = async(req, res) => {
     }
     
 }
-export default Supply
+export default suppliers

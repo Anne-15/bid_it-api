@@ -1,5 +1,5 @@
 import database_connection from "../app";
-import { Suppliers } from "../entity/Suppliers";
+import { Supply } from "../entity/Supply";
 
 const getSuppliers = async(req, res) => {
     //get data from request body
@@ -19,7 +19,7 @@ const getSuppliers = async(req, res) => {
         }
         //adding a company to the database
         database_connection.then(async(connection) => {
-            let supply = new Suppliers();
+            let supply = new Supply();
             supply.companyName = companyName;
             supply.category = category;
             supply.sector = sector;
@@ -42,7 +42,7 @@ const getSuppliers = async(req, res) => {
         })
     } catch (error) {
         res.status(400).send({"Error":"error"})
-        // console.log(error);
+        console.log(error);
     }
 }
 export default getSuppliers
