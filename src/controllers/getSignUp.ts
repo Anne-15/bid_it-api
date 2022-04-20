@@ -4,9 +4,10 @@ import database_connection from "../app";
 import { Sign } from "../entity/SignUp";
 
 const { SignUp } = require("../entity/Tenders");
-let hashpassword: string;
+// let hashpassword: string;
 
 const getSignUp = async(req, res) => {
+    console.log(req.body)
     //get data from request body
     const{
         fullName,
@@ -29,12 +30,6 @@ const getSignUp = async(req, res) => {
             throw{ Error: "Password is " + strong_pass.value}
         }
 
-        // //encrypt password
-        // bcrypt
-        // .hash(password, 10)
-        // .then((hash) => (hashpassword = hash))
-        // .catch((error) => console.log(error));
-
         //adding a user to the database
         database_connection
         .then(async(connection) => {
@@ -45,10 +40,11 @@ const getSignUp = async(req, res) => {
             user.created = new Date();
 
             await connection.manager.save(user).then((user) => {
+                res.header("Access-Control-Allow-Origin", "*");
                 res.status(200).send({" User created ": user.fullName});
+
             });
         })
-
         .catch((error) => {
             //check for duplicate users
             if(error.code == "23505"){
@@ -63,11 +59,6 @@ const getSignUp = async(req, res) => {
         res.status(400).send(error)
         console.log(error)
     }
-};
-
-//getting a user
-const getLoggedUser = async (req, res) => {
-    const email = parseInt(req.params.email);
 };
 
 export default getSignUp

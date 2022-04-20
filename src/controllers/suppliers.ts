@@ -9,12 +9,13 @@ const suppliers = async(req, res) => {
             await sample
             .find()
             .then((product) => {
+                res.header("Access-Control-Allow-Origin", "*");
                 res.send(product);
-                console.log(product);
+                // console.log(product);
             })
             .catch((error) => {
                 res.status(402).send(error);
-                // console.log(error);
+                console.log(error);
             })
         })
         .catch((error) => {
