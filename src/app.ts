@@ -10,7 +10,7 @@ import tenders from "./controllers/tenders";
 import suppliers from "./controllers/suppliers";
 
 const app = express();
-const PORT = 5000;
+const PORT = 6060;
 
 //database connection
 const database_connection = createConnection();
