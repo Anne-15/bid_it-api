@@ -9,7 +9,7 @@ export class Sign extends BaseEntity{
     @Column()
     fullName: string;
 
-    @Column()
+    @Column({unique:true})
     email: string;
 
     @Column()
