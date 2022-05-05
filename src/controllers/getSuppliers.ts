@@ -1,20 +1,23 @@
 import database_connection from "../app";
 import { Supply } from "../entity/Supply";
 
-const getSuppliers = async(req, res) => {
+const getSuppliers = async (req, res) => {
+    // console.log(req.body);
     //get data from request body
     const {
         companyName,
         category,
-        sector
+        sector,
+        about
     } : {
         companyName: string;
         category: string;
-        sector: string
+        sector: string;
+        about: string
     } = req.body;
     
     try {
-        if(!(companyName && category && sector)){
+        if(!(companyName && category && sector && about)){
             throw{Error: "Incomplete details"}
         }
         //adding a company to the database
@@ -23,6 +26,7 @@ const getSuppliers = async(req, res) => {
             supply.companyName = companyName;
             supply.category = category;
             supply.sector = sector;
+            supply.about = about;
 
             await connection.manager.save(supply).then((supply) => {
                 res.status(200).send({"Company added" : supply.companyName});

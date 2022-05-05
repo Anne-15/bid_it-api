@@ -8,7 +8,7 @@ const { SignUp } = require("../entity/Tenders");
 // let hashpassword: string;
 
 const getSignUp = async(req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     //get data from request body
     const{
         fullName,
@@ -65,7 +65,7 @@ const getSignUp = async(req, res) => {
             //check for duplicate users
             console.log(error.code)
             if(error.code == "23505"){
-                res.status(400).send({"Error":"User with the same name was added"});
+                res.status(400).send({ "Error": "User with the same name was added" });
             }else{
                 res.status(402).send({"Error":"error"})
                 console.log(error);

@@ -14,4 +14,7 @@ export class Supply extends BaseEntity{
 
     @Column()
     sector: string;
+
+    @Column()
+    about: string;
 }
